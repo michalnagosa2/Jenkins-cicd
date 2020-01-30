@@ -1,6 +1,6 @@
 node('linux')
 enviroment{
-	credentialsID = ''
+	credentialsID = 'michalnagosa2c'
 }
 def customeImage = ''
 stage('git'){
