@@ -1,6 +1,6 @@
 node('linux'){
 enviroment{
-	credentialsID = 'michalnagosa2'
+	credentialsID = 'jenkins'
 }
 stage('git'){
 	git branch: 'master',
