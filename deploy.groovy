@@ -7,7 +7,7 @@ environment{
 }
 stage('git'){
 git branch: 'master',
-url:'https://github.com/michalnagosa2/flask-http.git'
+url:'https://github.com/michalnagosa2/flask-http/blob/master/app.py'
 }
 stage("create dockerfile") {
 sh """
