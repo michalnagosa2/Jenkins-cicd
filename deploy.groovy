@@ -11,6 +11,7 @@ url:'https://github.com/michalnagosa2/flask-http.git'
 }
 stage("create dockerfile") {
 sh """
+tee Dockerfile <<-'EOF'
 FROM ubuntu:14.04
 MAINTAINER Docker Education Team <education@docker.com>
 RUN apt-get update
