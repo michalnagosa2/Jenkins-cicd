@@ -12,16 +12,16 @@ url:'https://github.com/michalnagosa2/flask-http.git'
 stage("create dockerfile") {
 sh """
 tee Dockerfile <<-'EOF'
-FROM ubuntu:14.04
-MAINTAINER Docker Education Team <education@docker.com>
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip 
-ADD ./webapp/requirements.txt /tmp/requirements.txt
-RUN pip install -qr /tmp/requirements.txt
-ADD ./webapp /opt/webapp/
-WORKDIR /opt/webapp
-EXPOSE 5000
-CMD ["python", "app.py"]
+FROM alpine:latest
+RUN apk update && \
+    apk add  python3 
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip3 install -r requirements.txt
+COPY . /app
+ENTRYPOINT [ "python3" ]
+CMD [ "app.py" ]
 EOF
 """
 }
