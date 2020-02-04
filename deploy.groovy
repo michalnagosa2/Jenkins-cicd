@@ -1,7 +1,7 @@
 node('linux'){
 def customImage = ""
 environment{
-    registry = 'michalnagosa96/opsschool-repo'
+    registry = 'michalnagosa96/project'
     registryCredential = 'docker.michal,nagosa96'
     customImage = ''
 }
@@ -26,7 +26,7 @@ EOF
 """
 }
 stage('Build image') {
-customImage = docker.build('michalnagosa96/opsschool-repo:tag')
+customImage = docker.build('michalnagosa96/project:tag')
 }
 stage("Push image") {
 docker.withRegistry('https://registry-1.docker.io/v1', 'docker.michal,nagosa96') {
