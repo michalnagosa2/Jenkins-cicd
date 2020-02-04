@@ -26,7 +26,7 @@ EOF
 """
 }
 stage('Build image') {
-customImage = docker.build('ec2-user/project:tag')
+customImage = docker.build("jenkins/opsschool-jenkins-test-01:tag")
 }
 stage("Push image") {
 docker.withRegistry('https://registry-1.docker.io/v1', 'docker.michal,nagosa96') {
